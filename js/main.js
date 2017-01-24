@@ -1,12 +1,8 @@
-//Escribir en el input de texto (id = mensaje)
 var mensajes = document.getElementById('mensajes');
 var chat = document.getElementById('chat');
 mensajes.addEventListener('click', onMensajesClick);
 
-function onMensajesClick(evt)
-{
-	agregarMensaje();
-}
+function onMensajesClick(evt){agregarMensaje();}
 
 function agregarMensaje()
 {
@@ -35,7 +31,13 @@ function agregarMensaje()
             chat.appendChild(abuela);
             mensajes.value="";
         }    
-    }
-    
+    }   
+}
+/*----------Eligiendo contacto---------*/
+var contacto = document.getElementsByClassName('avatar');
+function onContactoClick(evt){seleccionarContacto();}
+
+function seleccionarContacto()
+{
     
 }
