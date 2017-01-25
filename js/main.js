@@ -1,17 +1,8 @@
-//Escribir en el input de texto (id = mensaje)
-var mensajes = document.getElementById('mensajes');
-
-mensajes.addEventListener('click', onMensajesClick);
-
-function onMensajesClick(evt)
-{
-	agregarMensaje();
-}
-
-
-
-function agregarMensaje()
-{
-    //si el ultimo teclado es enter, agregar el mesaje tipeado en id=chat
-    
+/*----------Eligiendo contacto---------*/
+var contacto = document.getElementsByClassName('avatar');
+var chat = document.getElementById('chat');
+contacto[0].addEventListener('click', onContactoClick);
+function onContactoClick(evt){
+    //Cuando haya click en avatar limpiar chat "
+    alert(contacto.value);
 }
