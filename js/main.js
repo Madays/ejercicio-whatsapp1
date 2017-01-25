@@ -24,7 +24,6 @@ function agregarMensaje()
             var madre = document.createElement("div");
             madre.classList = "w-message-text";
             var h5NombreHijo = document.createElement("h5");
-            
             var pMensajesHijo = document.createElement("p");
             pMensajesHijo.innerHTML=mensajes.value;
             var divHoraHijo = document.createElement("div");
@@ -38,7 +37,9 @@ function agregarMensaje()
             madre.appendChild(divHoraHijo);
             abuela.appendChild(madre); 
             chat.appendChild(abuela);        
-            mensajes.value="";                   
+            mensajes.value="";      
+            //Scroll 
+            chat.scrollTop = chat.scrollHeight;
             
     }   
 }
