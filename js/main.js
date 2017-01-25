@@ -35,4 +35,14 @@ function agregarMensaje()
     }   
 }
 /*---------END---Agregar Mensaje-------------*/
+/*------------Seleccionar contacto-------------*/
+var contacto = document.getElementsByClassName('avatar');
+var chat = document.getElementById('chat');
+mensajes.addEventListener('click', onMensajesClick);
+
+function onMensajesClick(evt){agregarMensaje();}
+
+function agregarMensaje()
+{}
+/*---------END---Seleccionar contacto-------------*/
 
