@@ -4,6 +4,7 @@ var chat = document.getElementById('chat');
 mensajes.addEventListener('keyup', onMensajesClick);
 
 function onMensajesClick(evt){
+    //si preciono enter     
     if(evt.keyCode==13){
         agregarMensaje();    
     }
@@ -11,10 +12,12 @@ function onMensajesClick(evt){
 
 function agregarMensaje()
 {
-    //si el ultimo teclado es enter, agregar el mesaje tipeado en id=chat
-    var longMensajes = mensajes.value.length;
-    if(mensajes.value!==""){
-        //si preciono enter o click //mensajes.value[longMensajes-1] ==         
+    //Agregar hora
+            var fecha = new Date();
+            var hora = fecha.getHours()+":"+fecha.getMinutes();
+            window.status=hora;
+    //agregar el mesaje tipeado en id=chat
+    if(mensajes.value!==""){       
             //creeun elementos para nombre, texto y hora
             var abuela = document.createElement("div");
             abuela.classList = "w-message w-message-out";
@@ -25,6 +28,8 @@ function agregarMensaje()
             var pMensajesHijo = document.createElement("p");
             pMensajesHijo.innerHTML=mensajes.value;
             var divHoraHijo = document.createElement("div");
+            divHoraHijo.innerHTML=hora;
+            divHoraHijo.style.float="right";
             //cree un elementos para nombre texto hora***END
             
             //Creando paquete mensaje
@@ -32,8 +37,9 @@ function agregarMensaje()
             madre.appendChild(pMensajesHijo);
             madre.appendChild(divHoraHijo);
             abuela.appendChild(madre); 
-            chat.appendChild(abuela);
-            mensajes.value="";            
+            chat.appendChild(abuela);        
+            mensajes.value="";                   
+            
     }   
 }
 /*---------END---Agregar Mensaje-------------*/
