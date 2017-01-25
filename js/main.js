@@ -1,5 +1,5 @@
 /*------------Agregar Mensaje-------------*/
-var mensajes = document.getElementById('mensajes');
+/*var mensajes = document.getElementById('mensajes');
 var chat = document.getElementById('chat');
 mensajes.addEventListener('click', onMensajesClick);
 
@@ -33,16 +33,24 @@ function agregarMensaje()
             mensajes.value="";
         }    
     }   
-}
+}*/
 /*---------END---Agregar Mensaje-------------*/
+
 /*------------Seleccionar contacto-------------*/
-var contacto = document.getElementsByClassName('avatar');
-var chat = document.getElementById('chat');
-mensajes.addEventListener('click', onMensajesClick);
+//Al seleccionar los li de ul class="w-recent-chats debo obtener los datos img, nombre y texto y los datos img y nombre ponerlo en header tmb actualizar el campo chat"
 
-function onMensajesClick(evt){agregarMensaje();}
+    //obteniendo datos img, nombre    
+    var chat = document.getElementById('chat');
+    var contacto = document.getElementsByClassName('avatar');
+    contacto[0].addEventListener('click', onContactoClick);
+    
 
-function agregarMensaje()
-{}
+    //Actualizando ventana chat
+    function onContactoClick(evt){
+        if(evt.target){
+            chat.innerHTML="" ;
+        }
+    }
+    
 /*---------END---Seleccionar contacto-------------*/
 
