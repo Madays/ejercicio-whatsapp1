@@ -17,7 +17,7 @@ function agregarMensaje()
         //si preciono enter o click //mensajes.value[longMensajes-1] ==         
             //creeun elementos para nombre, texto y hora
             var abuela = document.createElement("div");
-            abuela.classList = "w-message w-message-in";
+            abuela.classList = "w-message w-message-out";
             var madre = document.createElement("div");
             madre.classList = "w-message-text";
             var h5NombreHijo = document.createElement("h5");
