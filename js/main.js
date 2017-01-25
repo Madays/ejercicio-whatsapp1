@@ -1,3 +1,4 @@
+/*------------Agregar Mensaje-------------*/
 var mensajes = document.getElementById('mensajes');
 var chat = document.getElementById('chat');
 mensajes.addEventListener('click', onMensajesClick);
@@ -33,11 +34,4 @@ function agregarMensaje()
         }    
     }   
 }
-/*----------Eligiendo contacto---------*/
-var contacto = document.getElementsByClassName('avatar');
-function onContactoClick(evt){seleccionarContacto();}
-
-function seleccionarContacto()
-{
-    
-}
+/*---------END---Agregar Mensaje-------------*/
