@@ -1,3 +1,4 @@
+/*-------------buscador------*/
 var search = document.getElementById("search");
 var contacto = document.getElementsByTagName("h4");
 var forEach = Array.prototype.forEach;
@@ -13,4 +14,5 @@ search.addEventListener("keyup", function(e){
   });
 }, 
 false);
+/*-------------end buscador------*/
 
