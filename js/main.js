@@ -37,3 +37,26 @@ function agregarMensaje()
     }   
 }
 /*---------END---Agregar Mensaje-------------*/
+
+/*-----------buscar-------------*/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
