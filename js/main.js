@@ -141,20 +141,19 @@ function agregarMensaje()
 /*---------END---Agregar Mensaje-------------*/
 
 /*------------Seleccionar contacto-------------*/
-//Al seleccionar los li de ul class="w-recent-chats debo obtener los datos img, nombre y texto y los datos img y nombre ponerlo en header tmb actualizar el campo chat"
+//Al seleccionar los li de ul class="w-recent-chats debo obtener los datos img y nombre ponerlo en header tmb actualizar el campo chat"
+
+    //Escuchnado el event click
+    var listaContactos = document.getElementsByClassName("w-recent-chats");
     listaContactos[0].addEventListener('click', onListaContactoClick);
-    function onListaContactoClick(evt){
-        //obteniendo datos img, nombre    
-        var contactoImg = document.getElementsByClassName('wh-44');
-        var contactoNombre = document.getElementsByClassName('w-contact-name');
-        //Actualizando ventana chat
-        var chat = document.getElementById('chat');
-        chat.innerHTML="";
-        //Actualizando header con nuevo contacto
-        var wChatProfile = document.getElementsByClassName('w-chat-profile');
-        wChatProfile[0].innerHTML="";
-        wChatProfile[0].innerHTML=evt.target.parentNode.firstChild;   
-        //wChatProfile[0].append(datosAvatar);
+    function onListaContactoClick(evt){ 
+        //Tengo los datos de avatar
+        var contacto = evt.target.parentNode;
+        console.log(contacto);
+        //Poer los datos de avatar en w-chat-profile
+        var wChatProfile = document.getElementsByClassName("w-chat-profile");
+        console.log(wChatProfile[0]);
+        wChatProfile[0].firstChild.nextElementSibling.innerHTML=contacto.firstChild.nextElementSibling.textContent;
     }
     
 /*---------END---Seleccionar contacto-------------*/
