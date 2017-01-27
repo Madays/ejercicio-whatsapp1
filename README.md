@@ -13,3 +13,4 @@
 ### El sistema debe tener una lista de contactos con los que se está conversando. Pueden ser obtenidos de una lista fija.
 ### Al seleccionar un usuario o grupo se debe limpiar la ventana de chat y permitir ingresar nuevos mensajes
 ### El sistema de búsqueda debe filtrar a los contactos y sólo mostrar los usuarios que hacen match con el texto ingresado. La opción de búsqueda se dispara después de hacer enter en el texto.
+
