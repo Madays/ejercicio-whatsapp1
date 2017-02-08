@@ -1,11 +1,39 @@
 //Parte Lógica
+var hora = new Date(); 
+function Chat(_nombre,_imagen){
+    this.nombre = _nombre;
+    this.imagenURL = _imagen;
+    this.ultimoMensaje = '';
+    this.horaUltimoMensaje = '';
+}
+var dataListaChats = [
+    new Chat('chat 1','image/logocodeacademy.png'),
+    new Chat('chat 2','image/logocodeacademy.png'),
+    new Chat('chat 3','image/logocodeacademy.png'),
+    new Chat('chat 4','image/logocodeacademy.png'),
+];
 //Parte visual
-function init(){
+var liListItem = null;
+function init(){    
+    initChatList();   
+}
+
+function initChatList(){
+    var elListaChats = document.getElementById('lista-chat');
+    for (var i in dataListaChats){
+        var htmlChatItem = '<li><div class="avatar">'+
+	  							'<img src="'+dataListaChats[i].imagenURL+'" alt="" class="wh-44">'+
+	  							'<h4 class="w-contact-name">'+dataListaChats[i].nombre+'</h4>'+
+	  							'<p class="w-last-message" id="mensaje">'+dataListaChats[i].ultimoMensaje+'</p>'+
+	  						'</div>'+
+	  						'<div class="time" id="hora">'+dataListaChats[i].horaUltimoMensaje+'</div></li>'; 
+        elListaChats.innerHTML += htmlChatItem;
+    }
     setEventChatList();
 }
 function setEventChatList(){
-    var listaChat = document.getElementById('lista-chat');
-    var arrListItems=listaChat.getElementsByTagName('li');
+    var listaChats = document.getElementById('lista-chat');
+    var arrListItems=listaChats.getElementsByTagName('li');
     for (var i=0; i<=arrListItems.length-1;i++){
         /*arrListItems[i].onclick=function(){
             alert("click");
@@ -15,13 +43,11 @@ function setEventChatList(){
 }
 
 function onChatItemClick(evt){
-    console.log(evt);
-    console.log(evt.currentTarget);
     var contactName = evt.currentTarget.getElementsByClassName('w-contact-name')[0].textContent;
     var imageURL=evt.currentTarget.getElementsByClassName('wh-44')[0].src;
     actualizarCabecera(contactName,imageURL,'conectado');
 }
-var liListItem = null;
+
 function onMensajeKey(evt){
     if(evt.keyCode==13){
         var inputMensajes = document.getElementById('mensajes');
@@ -30,16 +56,7 @@ function onMensajeKey(evt){
         inputMensajes.value="";        
     }
 }
-/*var listaChat = document.getElementById('lista-chat');
 
-var arrayListaChat=listaChat.getElementsByTagName('li');
-for(var i; i<=arrayListaChat.length;i++){
-    arrayListaChat[i].addEventListener('click',actualizarCabeceraYChatEvt) ;
- }*/
-function actualizarCabeceraYChatEvt(){
-    var inputMensajes = document.getElementById('mensajes');
-    actualizarCabeceraYChat(inputMensajes.value);
-}
 function crearMensaje(_mensaje){
     
     var htmlMensajeIn = '<div class="w-message w-message-in">'+
@@ -49,7 +66,6 @@ function crearMensaje(_mensaje){
 	  								'<div class="time">11:12</div>'+
 	  							'</div>'+
 	  						'</div>';
-    var hora = new Date();
     
     var htmlMensajeOut = '<div class="w-message w-message-out">'+
 	  							'<div class="w-message-text">'+
@@ -57,51 +73,35 @@ function crearMensaje(_mensaje){
 	  								'<div class="time">'+hora.getHours()+':'+hora.getMinutes()+'</div>'+
 	  							'</div>'+
 	  						'</div>';
-    var elChat = document.getElementById('chat');
-    elChat .innerHTML+=htmlMensajeOut;
-    elChat.scrollTop=elChat.scrollHeight;
-}
-
-function crearLisaChats(){
+    /*var mensaje = liListItem.getElementsByClassName('w-last-message')[0];
+    mensaje.innerHTML = _mensaje;*/
     
+    var elChat = document.getElementById('chat');
+    elChat.innerHTML+=htmlMensajeOut;
+    elChat.scrollTop=elChat.scrollHeight;
 }
 
 function crearChat(_mensaje){
     
-    var hora = new Date();
-    
+    var elListaChats = document.getElementById('lista-chat');      
+    if(liListItem==null){
+        liListItem = document.createElement('LI');          
+    } 
     var htmlChatItem = '<div class="avatar">'+
 		  				    '<img src="image/logocodeacademy.png" alt="" class="wh-44">'+
 		  				    '<h4 class="w-contact-name">Laboratoria Perú</h4>'+
 		  				    '<p class="w-last-message" id="mensaje">'+_mensaje+'</p>'+
 		  				'</div>'+
 							'<div class="time" id="hora">'+hora.getHours()+':'+hora.getMinutes()+'</div>';
-    if(liListItem==null){
-        liListItem = document.createElement('LI');
         liListItem.innerHTML = htmlChatItem;
-        var elListaChats = document.getElementById('lista-chat');
+        //var elListaChats = document.getElementById('lista-chat');
     //elListaChats.innerHTML+= htmlChatItem;                         
-        elListaChats.insertBefore(liListItem, elListaChats.childNodes[0]);    
-        
-    }
+        elListaChats.insertBefore(liListItem, elListaChats.childNodes[0]);
+    
+    setEventChatList();
     
 }
-/*function actualizarCabeceraYChat(_mensaje){
-    var htmlCabecera = '<div class="avatar">'+
-		  				    '<img src="image/logocodeacademy.png" alt="" class="wh-44">'+
-		  				    '<h4 class="w-contact-name">Laboratoria Perú</h4>'+
-		  				    '<p class="w-last-message" id="mensaje">'+_mensaje+'</p>'+
-		  				'</div>';
-    var cabeceraChat = document.getElementById('cabecera-chat');
-    cabeceraChat.innerHTML=htmlCabecera; 
-    
-    var hora = new Date();
-    var chat = document.getElementById('chat');
-    var htmlChat = '<p class="w-last-message" id="mensaje">'+_mensaje+'</p>'+
-		  				'</div>'+
-							'<div class="time" id="hora">'+hora.getHours()+':'+hora.getMinutes()+'</div>';
-    chat.innerHTML=htmlChat;     
-}*/
+
 function actualizarCabecera(_contactName,_imageURL,_estado){
     var chatHeader=document.getElementById('chat-header');
     chatHeader.getElementsByClassName('w-contact-name')[0].innerHTML=_contactName;
