@@ -12,6 +12,10 @@ var dataListaChats = [
     new Chat('chat 3','image/logocodeacademy.png'),
     new Chat('chat 4','image/logocodeacademy.png'),
 ];
+var arrAlmacenarChat = [];
+function pushMensajes(_mensaje){
+    arrAlmacenarChat.push({mensaje:_mensaje,hora:hora.getHours(),minutos:hora.getMinutes()});
+}
 //Parte visual
 var liListItem = null;
 function init(){    
@@ -52,8 +56,9 @@ function onMensajeKey(evt){
     if(evt.keyCode==13){
         var inputMensajes = document.getElementById('mensajes');
         crearMensaje(inputMensajes.value);
-        crearChat(inputMensajes.value);
-        inputMensajes.value="";        
+        crearChat(inputMensajes.value);         
+        pushMensajes(inputMensajes.value);
+        inputMensajes.value="";  
     }
 }
 
@@ -107,4 +112,13 @@ function actualizarCabecera(_contactName,_imageURL,_estado){
     chatHeader.getElementsByClassName('w-contact-name')[0].innerHTML=_contactName;
     chatHeader.getElementsByClassName('w-users-messages')[0].innerHTML=_estado;
     chatHeader.getElementsByTagName('img')[0].src=_imageURL;
+}
+
+function cargarChat(){
+    var htmlMensajeOut = '<div class="w-message w-message-out">'+
+	  							'<div class="w-message-text">'+
+	  								'<p>'+almacenarChat.mensaje+'</p>'+
+	  								'<div class="time">'+almacenarChat.hora+':'+almacenarChat.minutos+'</div>'+
+	  							'</div>'+
+	  						'</div>';   
 }
