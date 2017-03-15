@@ -12,6 +12,7 @@
 	  	<link href="css/font-awesome.min.css" rel="stylesheet">
 	  	<link href="css/main.css" rel="stylesheet">
 	  	<link href="css/queries.css" rel="stylesheet">
+	  	<script src="http://clientes.geekadvice.pe:4000/socket.io/socket.io.js"></script>
 	</head>
 	<body>
 	  	<div class="w-app">
@@ -254,6 +255,46 @@
 	  			</section>
 	  		</div>
 	  	</div>
+	  	<div class="container">
+	  	    <div class="row">
+	  	        <div class="col-md-4">
+	  	            <ul id="lista-usuarios"></ul>
+	  	        </div>
+	  	        <div class="col-md-8">
+	  	            <ul id="lista-mensajes"></ul>
+	  	        </div>
+	  	    </div>
+	  	</div>
+	  	
+	  	<input type="text" id="name">
+	  	<button id="btn-ingresar">Ingresar</button>
+	  	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+	  	<script>
+	  	    var socket;
+            window.onload = function(){
+                socket = io.connect('http://clientes.geekadvice.pe:4000/');
+                
+                socket.on('list_users',function(_users){ /*cuando resivo list_user ejecuto el callback*/
+                          console.log(_users);
+                            drawUser(_users);
+                          });
+                $("#btn-ingresar").click(identificar); 
+                socket.on('new_user',function(_user){
+                    $('#lista-usuarios').append('<li>'+_user.name+'</li>');
+                });
+            };
+            function drawUser(_users){
+                var lista = $('#lista-usuarios');
+                for(var i in _users){
+                    lista.append('<li>'+_users[i].name+'</li>');
+                }
+            }
+            
+            function identificar(){
+                socket.emit('identify',$('#name').val());    
+            }
+	  	</script>
+	  	
 		<script type="text/javascript" src="js/main.js"></script>
 	</body>
 </html>

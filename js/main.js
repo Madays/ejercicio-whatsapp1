@@ -90,7 +90,7 @@ function crearMensaje(_mensaje){
 	  								'<div class="time">11:12</div>'+
 	  							'</div>'+
 	  						'</div>';
-    
+    socket.emit('send',_mensaje);
     var htmlMensajeOut = '<div class="w-message w-message-out">'+
 	  							'<div class="w-message-text">'+
 	  								'<p>'+_mensaje+'</p>'+
